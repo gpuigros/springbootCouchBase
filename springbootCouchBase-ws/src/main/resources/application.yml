@@ -1,0 +1,58 @@
+# THIS FILE SHOULD NOT BE EDITED
+# ALL APPLICATION CONFIGURATION MUST BE IN CONFIG SERVER
+# THIS FILE ONLY CONTAINS "STRUCTURAL" CONFIGURATION AND MUST NOT BE CHANGED
+
+info:
+  version: 1.0
+  title: hazelcastTaskDistributor
+server:
+  port: 8081
+management:
+  context-path: /manage
+  security:
+    enabled: true
+endpoints:
+  enabled: true
+  env:
+    enabled: true
+  restart:
+    enabled: true
+    sensitive: false
+  shutdown:
+    enabled: true
+  health:
+    enabled: true
+    sensitive: false
+  mappings:
+    enabled: true
+
+# Swagger specification path
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api-docs
+
+# Jackson serialization library: date serialization configuration
+jackson:
+  serialization:
+    write_dates_as_timestamps: false
+spring:
+  data:
+    couchbase:
+      auto-index: true
+  couchbase:
+    bootstrap-hosts: localhost
+    env:
+      timeouts:
+        connect: 10000
+        ocket-connect: 100000
+couchbase:
+  cluster:
+    bucket: couchbasePoC
+    password: couchbasePoC
+    ip: 127.0.0.1
+
+
+logging:
+  config: classpath:log4j2.xml
